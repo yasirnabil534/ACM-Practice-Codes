@@ -31,7 +31,7 @@
 #define infinity        (1<<28)
 #define gcd(a, b)       __gcd(a,b)
 #define lcm(a, b)       ((a)*(b)/gcd(a,b))
-#define mx              123456789
+#define mx              1234567899
 #define PI              2*acos(0.0)
 #define rep(i,a,b)      for(__typeof(i) i=a; i<=b; i++)
 #define rev(i,a,b)      for(__typeof(i) i=a; i>=b; i--)
@@ -45,7 +45,7 @@ using namespace std;
 ///const int fx[] = {+0,+0,+1,-1,-1,+1,-1,+1}; ///King's move
 ///const int fy[] = {-1,+1,+0,+0,+1,+1,-1,-1}; ///king's Move
 ///const int fx[] = {-2,-2,-1,-1,+1,+1,+2,+2}; ///knight's move
-///const int fx[] = {-1,+1,-2,+2,-2,+2,-1,+1}; ///knight's move
+///const int fy[] = {-1,+1,-2,+2,-2,+2,-1,+1}; ///knight's move
 ///---------------------------------------------------------------
 
 bool cmp(int a,int b)
