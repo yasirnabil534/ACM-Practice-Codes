@@ -58,13 +58,14 @@ struct Data
     }
 };
 
+ll arr[100005];
 Data tree[300005];
 
 void init(ll node, ll b, ll e)
 {
     if(b==e)
     {
-        tree[node].sum = 0;
+        tree[node].sum = arr[b];
         return;
     }
     ll left = node*2;
