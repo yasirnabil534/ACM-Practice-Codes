@@ -89,3 +89,16 @@ int main()
     }
     return 0;
 }
+
+/**
+Logic of behind:
+You have n mail and m people at most should attain.
+Suppose, you want to select 0 mail to sent.
+So, for this you must not put any letter into it's envelop.
+That combinations means the derangement number.
+Now, think you want i letter in its correct envelop.
+So, i letter will be placed in it's envelop and (n-i) letter will be deranged.
+And i letters from n letters can be selected in nCi ways.
+so combination of selecting i letter from n as correct is nCi*derengement(n-i)
+Now, sum up all combination from 0 to m and the sum is the answer.
+*/
