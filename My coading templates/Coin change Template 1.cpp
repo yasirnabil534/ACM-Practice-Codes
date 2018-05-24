@@ -69,6 +69,7 @@ int change(int pos, int taka)
 int main()
 {
     ms(dp,-1);
+    cin>>n;
     cout<<change(0,n)<<endl;
     return 0;
 }
