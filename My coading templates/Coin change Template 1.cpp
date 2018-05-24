@@ -60,7 +60,7 @@ int change(int pos, int taka)
     if(taka==0)
         return dp[pos][taka] = 1;
     int p1 = 0;
-    if(taka+notes[pos])
+    if(taka-notes[pos]>=0)
        p1 = change(pos,taka-notes[pos]);
     int p2 = change(pos+1,taka);
     return dp[pos][taka] = p1 + p2;
