@@ -40,9 +40,9 @@
 using namespace std;
 
 template<typename T>inline T POW(T B,T P){ if(P==0) return 1; if(P&1) return B*POW(B,P-1);  else return SQR(POW(B,P/2));}
-long long Bigmod(ll base, ll power, ll mod){if(power==0) return 1%mod; ll x = Bigmod(base,power/2,mod); if(base%2){x = (x*(base%mod))%mod;}return x;}
+ll Bigmod(ll base, ll power, ll mod){if(power==0) return 1%mod; ll x = Bigmod(base,power/2,mod); if(base%2){x = (x*(base%mod))%mod;}return x;}
 bool isVowel(char ch){ ch=toupper(ch); if(ch=='A'||ch=='U'||ch=='I'||ch=='O'||ch=='E') return true; return false;}
-long long ModInverse(ll number, ll mod){return Bigmod(number, mod-2, mod);}
+ll ModInverse(ll number, ll mod){return Bigmod(number, mod-2, mod);}
 bool isConso(char ch){if (isalpha(ch) && !isVowel(ch)) return true; return false;}
 int toInt(string s)  { int sm; stringstream ss(s); ss>>sm; return sm; }
 bool isPrime( ll val ) { if( val == 2 ) return true ; if( val % 2 == 0 || val == 1 ) return false ; ll sqrt_N = (ll) ( ( double ) sqrt( val ) ) ; for( ll i = 3 ; i <= sqrt_N ; i += 2 ) { if( val % i == 0 ) return false ; } return true ; }
