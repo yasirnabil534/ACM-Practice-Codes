@@ -38,8 +38,10 @@
 
 using namespace std;
 
-template<typename T>inline T POW(T B,T P){ if(P==0) return 1; if(P&1) return B*POW(B,P-1);  else return SQR(POW(B,P/2));}
-ll Bigmod(ll base, ll power, ll mod){if(power==0) return 1%mod; ll x = Bigmod(base,power/2,mod); if(base%2){x = (x*(base%mod))%mod;}return x;}
+template<typename T>inline T POW(T B,T P){ if(P==0) return 1; if(P&1) return B*POW(B,P-1);  else return sqr(POW(B,P/2));}
+ll Bigmod(ll base, ll power, ll mod){if(power==0) return 1%mod; if(power==1) return base%mod; ll x = Bigmod(base,power/2,mod); x = (x*x)%mod; if(power%2){x = (x*(base%mod))%mod;}return x;}
+ll Mulmod(ll base, ll power, ll mod){if(power==0) return 0; if(power==1) return base%mod; ll x = Mulmod(base,power/2,mod); x = (x+x)%mod; if(power%2){x = (x+(base%mod))%mod;}return x;}
+ll BigMulmod(ll base, ll power, ll mod){if(power==0) return 1%mod; if(power==1) return base%mod; ll x = BigMulmod(base,power/2,mod); x = Mulmod(x,x,mod); if(power%2){x = Mulmod(x,(base%mod),mod);}return x;}
 bool isVowel(char ch){ ch=toupper(ch); if(ch=='A'||ch=='U'||ch=='I'||ch=='O'||ch=='E') return true; return false;}
 ll ModInverse(ll number, ll mod){return Bigmod(number, mod-2, mod);}
 bool isConso(char ch){if (isalpha(ch) && !isVowel(ch)) return true; return false;}
