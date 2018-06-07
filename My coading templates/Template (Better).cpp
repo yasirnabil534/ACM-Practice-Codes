@@ -33,7 +33,7 @@
 #define lcm(a, b)       ((a)*(b)/gcd(a,b))
 #define mx              1234567899
 #define PI              2*acos(0.0)
-#define all(v)          (v.begin(),v.end())
+#define all(v)          v.begin(),v.end()
 #define rep(i,a,b)      for(__typeof(i) i=a; i<=b; i++)
 #define rev(i,a,b)      for(__typeof(i) i=a; i>=b; i--)
 
