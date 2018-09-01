@@ -74,12 +74,12 @@ template<typename T> using orderset = tree<T,null_type,less<T>,rb_tree_tag,tree_
 ///const int fy[] = {-1,+1,-2,+2,-2,+2,-1,+1}; ///knight's move
 ///---------------------------------------------------------------
 
-bool onSegment(Point p, Point q, Point r)
+bool onSegment(pll p, pll q, pll r)
 {
-    if (q.x <= max(p.x, r.x) && q.x >= min(p.x, r.x) &&
-        q.y <= max(p.y, r.y) && q.y >= min(p.y, r.y))
+    if (q.ff <= max(p.ff, r.ff) && q.ff >= min(p.ff, r.ff) &&
+        q.ss <= max(p.ss, r.ss) && q.ss >= min(p.ss, r.ss))
        return true;
- 
+
     return false;
 }
 
