@@ -80,7 +80,7 @@ ll visited[100005];
 ll started[100005];
 ll parent[100005];
 ll low[100005];
-vector< pair<ll,ll> > rasta;
+vector< pair<ll,ll> > rasta; /// in this vector all bridges are stored from rasta[x].ff to rasta[x].ss
 bool mark[100005];
 ll Time;
 
