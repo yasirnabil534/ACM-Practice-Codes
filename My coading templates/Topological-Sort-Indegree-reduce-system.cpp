@@ -69,86 +69,76 @@ template<typename T> using orderset = tree<T,null_type,less<T>,rb_tree_tag,tree_
 ///const int fy[] = {-1,+1,-2,+2,-2,+2,-1,+1}; ///knight's move
 ///---------------------------------------------------------------
 
-struct Node
-{
-    ll no, indegree;
-    Node()
-    {
-        no = indegree = 0;
-    }
-    bool operator < (const Node& A) const
-    {
-        if(indegree!=A.indegree)
-            return indegree>A.indegree;
-        else if(no!=A.no)
-            return no>A.no;
-        return 0;
-    }
-};
-
-vl graph[100005];
-map<string,ll> stll;
-
-void make_graph(ll u, ll v)
-{
-    graph[u].pb(v);
-}
+vector<int>adj[1000];
+int visited[1000];
+vector<int>e;
+int arr[1000];
 
 int main()
 {
-    ll n;
-    ll t = 0;
-    while(scln(n)!=EOF)
+    int node,edge,a,b;
+
+    priority_queue<int,vector<int>,greater<int> >q;
+
+
+    while(cin>>node>>edge)
     {
-        t++;
-        stll.clear();
-        ll m;
-        string str[n+3];
-        for(ll i = 1; i <= n; i++)
+        memset(visited,0,sizeof visited);
+        memset(arr,0,sizeof arr);
+        if(node==0 && edge==0)
         {
-            getchar();
-            cin>>str[i];
-            stll[str[i]] = i;
+            break;
         }
-        Node ar[n+1];
-        for(ll i = 1;i <= n; i++){ ar[i].no = i; /*ar[i].indegree = 0;*/}
-        scln(m);
-        string ss1, ss2;
-        for(ll i = 0; i < m; i++)
+        for(int i=0; i<edge; i++)
         {
-            getchar();
-            cin>>ss1>>ss2;
-            make_graph(stll[ss1],stll[ss2]);
-            ar[stll[ss2]].indegree++;
-        };
-        pf("Case #%d: Dilbert should drink beverages in this order:",t);
-        ll key = 1, next = 2;
-        Node fr;
-        priority_queue<Node>PQ[3];
-        queue<ll>Q;
-        while(!Q.empty())Q.pop();
-        for(ll i = 1; i <= 2; i++) while(!PQ[i].empty())PQ[i].pop();
-        for(ll i = 1; i <= n; i++)
-            PQ[1].push(ar[i]);
-        while(!PQ[key].empty() || !PQ[next].empty())
-        {
-            fr = PQ[key].top();
-            Q.push(fr.no);
-            for(ll i = 0; i < graph[fr.no].size(); i++)
-                if(ar[graph[fr.no][i]].indegree>0)ar[graph[fr.no][i]].indegree--;
-            ar[fr.no].indegree = 10000000000;
-            for(ll i = 1; i <= n; i++)
-                if(ar[i].indegree<10000000000) PQ[next].push(ar[i]);
-            while(!PQ[key].empty()) PQ[key].pop();
-            swap(next,key);
+            cin>>a>>b;
+            adj[a].push_back(b);
+            arr[b]++;
         }
-        while(!Q.empty())
+
+        for(int i=1; i<=node; i++)
         {
-            cout<<' '<<str[Q.front()];
-            Q.pop();
+            if(arr[i]==0)
+            {
+                visited[i]=1;
+                q.push(i);
+            }
         }
-        pf(".\n\n");
-        for(ll i = 0; i <= n; i++) graph[i].clear();
+
+
+        while(!q.empty())
+        {
+            int x=q.top();
+            e.push_back(x);
+            q.pop();
+
+            for(int j=0; j<adj[x].size(); j++)
+            {
+                int v=adj[x][j];
+                arr[v]--;
+                if( arr[v] == 0 && visited[v] == 0 )
+                {
+                    visited[v]=1;
+                    q.push(v);
+                }
+            }
+        }
+        for(int i=0; i<(int)e.size(); i++)
+        {
+            if(i>0)
+                cout<<' ';
+            cout<<e[i];
+        }
+        cout<<endl;
+        e.clear();
+        for(int i=0; i<=node; i++)
+        {
+            adj[i].clear();
+        }
+        while(!q.empty())
+        {
+            q.pop();
+        }
     }
     return 0;
 }
