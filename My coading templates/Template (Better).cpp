@@ -49,6 +49,7 @@ bool isConso(char ch){if (isalpha(ch) && !isVowel(ch)) return true; return false
 int toInt(string s)  { int sm; stringstream ss(s); ss>>sm; return sm; }
 bool isPrime( ll val ) { if( val == 2 ) return true ; if( val % 2 == 0 || val == 1 ) return false ; ll sqrt_N = (ll) ( ( double ) sqrt( val ) ) ; for( ll i = 3 ; i <= sqrt_N ; i += 2 ) { if( val % i == 0 ) return false ; } return true ; }
 template<class T> string convert(T _input) { stringstream blah; blah << _input; return blah.str(); }
+int distchar(char a, char b){int x = ((a - b)+26)%26;int y = ((b-a)+26)%26;return min(x,y);}
 
 /**
 // Ordered set
