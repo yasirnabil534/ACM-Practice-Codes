@@ -6,7 +6,7 @@ bool cmp(ll x, ll y)
 }
 
 int L[10002];
-int dist[10002];
+int dist[10002]; /// Depends on problem, if cost is needed
 int P[10002][23];
 int T[10002];
 
@@ -17,23 +17,25 @@ void make_graph(int u, int v, int x)
 {
     graph[u].pb(v);
     graph[v].pb(u);
-    cost[u].pb(x);
-    cost[v].pb(x);
+    cost[u].pb(x); /// If cost is needed
+    cost[v].pb(x); /// If cost is needed
 }
 
 vi graph[100005];
 
-void DFS(int par, int u, int lvl)
+void DFS(int par, int u, int lvl, int d) /// d is needed if cost is needed
 {
     T[u] = par;
     L[u] = lvl;
+    dist[u] = d;
     for(int i = 0; i < (int)graph[u].size(); i++)
     {
         int v = graph[u][i];
         if(v==par) continue;
-        DFS(u, v, lvl + 1);
+        DFS(u, v, lvl + 1, d + cost[u][i]);
     }
 }
+
 
 int _find(int N, int p, int k)  /// Not necessary, just find kth parent in O(lg(n))
 {
