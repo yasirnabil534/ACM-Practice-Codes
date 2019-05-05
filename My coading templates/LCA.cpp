@@ -5,9 +5,21 @@ bool cmp(ll x, ll y)
     return x>y;
 }
 
-int L[100002];
-int P[100002][23];
-int T[100002];
+int L[10002];
+int dist[10002];
+int P[10002][23];
+int T[10002];
+
+vi graph[10002];
+vi cost[10002];
+
+void make_graph(int u, int v, int x)
+{
+    graph[u].pb(v);
+    graph[v].pb(u);
+    cost[u].pb(x);
+    cost[v].pb(x);
+}
 
 vi graph[100005];
 
