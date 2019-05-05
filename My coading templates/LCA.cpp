@@ -23,6 +23,24 @@ void DFS(int par, int u, int lvl)
     }
 }
 
+int _find(int N, int p, int k)  /// Not necessary, just find kth parent in O(lg(n))
+{
+    int lg;
+    lg = 0;
+    while(1)
+    {
+        int next = lg + 1;
+        if((1<<next)>L[p]) break;
+        lg++;
+    }
+    for(int i = lg; i >= 0; i--)
+    {
+        if(L[p] - (1 << i) >= k)
+            p = P[p][i];
+    }
+    return p;
+}
+
 int LCA_query(int N, int p, int q)
 {
     int lg;
@@ -73,16 +91,56 @@ void LCA_init(int N)
 
 int main()
 {
-    graph[0].pb(1);
-    graph[1].pb(0);
-	graph[0].pb(2);
-	graph[2].pb(0);
-	graph[2].pb(3);
-	graph[3].pb(2);
-	graph[2].pb(4);
-	graph[4].pb(2);
-	DFS(0, 0, 0);
-	LCA_init(5);
-	printf( "%d\n", LCA_query(5,3,4) );
+    int t,TT;
+    scin(TT);
+    RUN_CASE(t,TT)
+    {
+        if(t>1){
+            pf("\n");
+            ms(L,0);
+            ms(dist,0);
+            ms(T,0);
+        }
+        int n;
+        scin(n);
+        int a,b,x;
+        for(int i = 1; i < n; i++)
+        {
+            scin(a);
+            scin(b);
+            scin(x);
+            make_graph(a,b,x);
+        }
+        DFS(0, 1, 0, 0);
+        LCA_init(n);
+        string str;
+        while(1)
+        {
+            cin>>str;
+            if(str=="DONE") break;
+            scin(a);
+            scin(b);
+            if(str=="DIST")
+            {
+                int m = LCA_query(n,a,b);
+                pf("%d\n", dist[a] + dist[b] - (2*dist[m]));
+            }
+            else if(str=="KTH")
+            {
+                scin(x);
+                int m = LCA_query(n,a,b);
+                if(L[a] - L[m] + 1 >= x)
+                    pf("%d\n",_find(n,a,L[a]-x+1));
+                else
+                    pf("%d\n",_find(n,b,2*L[m] + x - L[a] - 1));
+                    //pf("%d\n",_find(n,b,(L[b]-L[m])-(x-(L[a]-L[m]+1))));
+            }
+        }
+        for(int i = 0; i <= n; i++)
+        {
+            graph[i].clear();
+            cost[i].clear();
+        }
+    }
     return 0;
 }
