@@ -39,7 +39,7 @@ int main()
             if(a == 0 && b == 0) break;
             ST.insert(a);
             ST.insert(b);
-            MAT[a][b] = 1;
+            MAT[a][b] = 1; /// For single direction, if bidirectional, set MAT[b][a] = a too
             sc("%d %d",&a,&b);
         }
         floyd_warshell();
