@@ -71,7 +71,7 @@ template<typename T> using orderset = tree<T,null_type,less<T>,rb_tree_tag,tree_
 ///const int fy[] = {-1,+1,-2,+2,-2,+2,-1,+1}; ///knight's move
 ///---------------------------------------------------------------
 
-bool cmp(int a,int b)
+bool cmp(ll a,ll b)
 {
     return a>b;
 }
