@@ -95,7 +95,7 @@ int main()
 void TEST(){
     int t = 1, T;
     cin>>T;
-    RUN_TEST(t,T){
+    RUN_CASE(t,T){
         Solve();
     }
 }
