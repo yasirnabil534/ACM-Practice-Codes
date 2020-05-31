@@ -46,7 +46,7 @@ template<typename T>inline T POW(T B,T P){ if(P==0) return 1; if(P&1) return B*P
 ll Bigmod(ll base, ll power, ll mod){if(power==0) return 1%mod; if(power==1) return base%mod; ll x = Bigmod(base,power/2,mod); x = (x*x)%mod; if(power%2){x = (x*(base%mod))%mod;}return x;}
 ll Mulmod(ll base, ll power, ll mod){if(power==0) return 0; if(power==1) return base%mod; ll x = Mulmod(base,power/2,mod); x = (x+x)%mod; if(power%2){x = (x+(base%mod))%mod;}return x;}
 ll BigMulmod(ll base, ll power, ll mod){if(power==0) return 1%mod; if(power==1) return base%mod; ll x = BigMulmod(base,power/2,mod); x = Mulmod(x,x,mod); if(power%2){x = Mulmod(x,(base%mod),mod);}return x;}
-bool isVowel(char ch){ ch=toupper(ch); if(ch=='A'|ch=='U'||ch=='I'||ch=='O'||ch=='E') return true; return false;}
+bool isVowel(char ch){ ch=toupper(ch); if(ch=='A'||ch=='U'||ch=='I'||ch=='O'||ch=='E') return true; return false;}
 ll ModInverse(ll number, ll mod){return Bigmod(number, mod-2, mod);}
 bool isConso(char ch){if (isalpha(ch) && !isVowel(ch)) return true; return false;}
 int toInt(string s)  { int sm; stringstream ss(s); ss>>sm; return sm; }
@@ -54,7 +54,7 @@ bool isPrime( ll val ) { if( val == 2 ) return true ; if( val % 2 == 0 || val ==
 template<class T> string convert(T _input) { stringstream blah; blah << _input; return blah.str(); }
 int distchar(char a, char b){int x = ((a - b)+26)%26;int y = ((b-a)+26)%26;return min(x,y);}
 
-
+/**
 // Ordered set
 #include <ext/pb_ds/assoc_container.hpp>
 using namespace __gnu_pbds;
@@ -63,7 +63,7 @@ template<typename T> using orderset = tree<T,null_type,less<T>,rb_tree_tag,tree_
 //orderset<int> X; //X.insert(1); //X.insert(2); //X.insert(4); //X.insert(8); //X.insert(16);
 //cout<<*X.find_by_order(1)<<endl; // 2 //cout<<*X.find_by_order(2)<<endl; // 4 //cout<<*X.find_by_order(4)<<endl; // 16 //cout<<(end(X)==X.find_by_order(6))<<endl; // true
 //cout<<X.order_of_key(-5)<<endl;  // 0 //cout<<X.order_of_key    (1)<<endl;   // 0 //cout<<X.order_of_key(3)<<endl;   // 2 //cout<<X.order_of_key(4)<<endl;   // 2 //cout<<X.order_of_key(400)<<endl; // 5
-
+*/
 
 ///--------------Graph Moves--------------------------------------
 ///const int fx[] = {+1,-1,+0,+0};
