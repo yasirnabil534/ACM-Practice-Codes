@@ -114,7 +114,7 @@ int main()
     cin>>x;
     ll n = x;
     ll cnt, num;
-    Num.pb(1);        /// Ei line bad
+    Num.pb(1);        /// Ei line bad, eta p[i]^cnt[i] save kore
     for(int i = 0; i < (int)Prime.size() && Prime[i]*Prime[i] <= x; i++)  /// Start's here
     {
         cnt = 0;
@@ -136,7 +136,7 @@ int main()
         Num.pb(x);            /// Eta lagbe na
         Factor.pb(mp(x,1));
     }                                                                   /// End's Here
-    sort(all(Num),cmp);
+    sort(all(Num),cmp);                                                 /// Be careful, sort eta bad kintu
     ll left = 10000000000000LL, right = 10000000000000LL;
     ll sz = (ll)Num.size();
     ll lft = 1, rgt = 1;
