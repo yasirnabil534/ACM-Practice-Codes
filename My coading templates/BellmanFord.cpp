@@ -104,7 +104,7 @@ void BellmanFord(ll s)
             }
         }
     }
-    while(1){
+    while(1){   /// This loop is used to find the nodes that are in a negative cycle
         bool fg = 1;
         for(Edge e: graph){
             if(dist[e.v] < 0) continue;
