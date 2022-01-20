@@ -26,7 +26,7 @@
 #define DBG3            pf("HI-3\n")
 #define MOD             1000000007
 #define CIN             ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0)
-#define RUN_CASE(t,T)   for(__typeof(t) t=1;t<=T;t++)
+#define RUN_CASE(t,T)   for(t=1;t<=T;t++)
 #define CASE(t)         printf("Case %d: ",t)
 #define CASEL(t)        printf("Case %d:\n",t)
 #define intlimit        2147483648
