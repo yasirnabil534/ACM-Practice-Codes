@@ -92,8 +92,8 @@ int main()
     return 0;
 }
 
+int t = 1, T;
 void TEST(){
-    int t = 1, T;
     cin>>T;
     RUN_CASE(t,T){
         Solve();
@@ -101,5 +101,5 @@ void TEST(){
 }
 
 void Solve(){
-    /// Do code
+    /// Do code, but do not take t and T as veriable name, they are already test case
 }
